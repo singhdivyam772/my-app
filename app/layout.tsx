@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import { FaCartPlus } from "react-icons/fa";
+import { GoPerson } from "react-icons/go";
+import Footer from "./MainComponents/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +20,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="fixed flex justify-between items-center top-0 z-10 mb-4 bg-green-400 w-full h-[4.5rem]">
+          <h1 className="text-3xl font-semibold px-4">Divyam Singh</h1>
+          <ul className="flex">
+            <li className="mr-4">
+              <Link href="/Home">Home</Link>
+            </li>
+            <li>
+              <Link href="/About">About</Link>
+            </li>
+          </ul>
+          <ul className="flex px-4 gap-4">
+            <FaCartPlus />
+            <GoPerson />
+          </ul>
+        </div>
+        <div className="pt-[4.5rem]">
+          {children}
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }
