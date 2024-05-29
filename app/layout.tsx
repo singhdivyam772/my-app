@@ -5,6 +5,8 @@ import Link from "next/link";
 import { FaCartPlus } from "react-icons/fa";
 import { GoPerson } from "react-icons/go";
 import Footer from "./MainComponents/Footer";
+import { IoSearchOutline } from "react-icons/io5";
+import LandingPage from "./MainComponents/LandingPage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="fixed flex justify-between items-center top-0 z-10 mb-4 bg-green-400 w-full h-[4.5rem]">
+      <body className={`${inter.className} min-h-screen`}>
+        <div className="fixed flex justify-between items-center top-0 z-10 mb-[7rem] bg-green-400 w-full h-[4.5rem]">
+
+          {/* logo */}
           <h1 className="text-3xl font-semibold px-4">Divyam Singh</h1>
+
+          {/* middle content */}
           <ul className="flex">
             <li className="mr-4">
               <Link href="/Home">Home</Link>
@@ -30,15 +36,31 @@ export default function RootLayout({
             <li>
               <Link href="/About">About</Link>
             </li>
+            <li>
+              <Link href="/Signup">Signup</Link>
+            </li>
           </ul>
-          <ul className="flex px-4 gap-4">
+
+          {/* right content */}
+          <ul className=" relative flex justify-center items-center px-4 gap-4">
+          <input 
+              type="text" 
+              className=" md:w-[10rem] relative h-8 border rounded-lg px-4 "
+              
+              />
+            <IoSearchOutline className=" absolute left-[9rem] font-bold"/>
             <FaCartPlus />
             <GoPerson />
+           
           </ul>
         </div>
         <div className="pt-[4.5rem]">
           {children}
-          <Footer />
+
+          <LandingPage/>
+
+        {/* footer */}
+         <Footer/>
         </div>
       </body>
     </html>
